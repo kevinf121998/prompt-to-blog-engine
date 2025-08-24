@@ -32,9 +32,12 @@ export default function DraftDetailPage() {
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
-    if (params.id) {
-      fetchDraft(params.id as string);
-    }
+    const loadDraft = async () => {
+      if (params.id) {
+        await fetchDraft(params.id as string);
+      }
+    };
+    loadDraft();
   }, [params.id]);
 
   const fetchDraft = async (id: string) => {

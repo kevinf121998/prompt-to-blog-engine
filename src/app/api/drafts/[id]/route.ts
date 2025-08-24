@@ -4,7 +4,7 @@ import { cookies } from 'next/headers';
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const cookieStore = await cookies();
@@ -33,6 +33,7 @@ export async function PUT(
     }
 
     const { blog_md, linkedin_txt, footnotes_md } = await request.json();
+    const { id } = await params;
 
     // Update the draft
     const { data: draft, error } = await supabase
@@ -42,7 +43,7 @@ export async function PUT(
         linkedin_txt,
         footnotes_md
       })
-      .eq('id', params.id)
+      .eq('id', id)
       .select()
       .single();
 
@@ -60,7 +61,7 @@ export async function PUT(
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const cookieStore = await cookies();
@@ -89,6 +90,7 @@ export async function GET(
     }
 
     // Get the draft with brief information
+    const { id } = await params;
     const { data: draft, error } = await supabase
       .from('drafts')
       .select(`
@@ -99,7 +101,7 @@ export async function GET(
           created_at
         )
       `)
-      .eq('id', params.id)
+      .eq('id', id)
       .single();
 
     if (error) {
