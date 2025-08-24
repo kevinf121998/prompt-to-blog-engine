@@ -71,7 +71,8 @@ Keep each insight to 1-2 sentences maximum.`
     }
 
     // Parse the numbered insights
-    const insightMatches = fullResponse.match(/(\d+)\.\s*(.+?)(?=\d+\.|$)/gs);
+    const lines = fullResponse.split('\n').filter(line => line.trim());
+    const insightMatches = lines.filter(line => /^\d+\./.test(line));
     
     if (!insightMatches || insightMatches.length !== 3) {
       return NextResponse.json(
