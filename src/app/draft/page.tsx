@@ -11,8 +11,7 @@ import { Brief } from '@/types/brief';
 import { ParsedOutput, parseOutputs } from '@/utils/parseOutputs';
 import { ExtractedSnippets } from '@/types/snippets';
 import { showToast } from '@/utils/toast';
-import { hashString } from '@/utils/hash';
-import { getWordCount, getReadingTime } from '@/utils/textProcessing';
+// Removed unused imports
 
 export default function DraftPage() {
   const router = useRouter();
@@ -315,7 +314,7 @@ export default function DraftPage() {
                   <div className="text-center py-12">
                     <p className="text-gray-500 text-lg">No snippets extracted yet</p>
                     <p className="text-gray-400 text-sm mt-2">
-                      Generate content first, then click "Extract Snippets" to create reusable assets
+                      Generate content first, then click &quot;Extract Snippets&quot; to create reusable assets
                     </p>
                   </div>
                 )}

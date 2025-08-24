@@ -18,7 +18,7 @@ interface DraftWithBrief {
   updated_at: string;
   briefs: {
     id: string;
-    json: any;
+    json: Record<string, unknown>;
     created_at: string;
   };
 }
@@ -120,13 +120,13 @@ export default function DraftDetailPage() {
   }
 
   // Convert the brief JSON to the Brief type
-  const brief: Brief = draft.briefs.json;
+  const brief: Brief = draft.briefs.json as unknown as Brief;
 
   // Create parsed outputs for display
   const outputs: ParsedOutput = {
     blogDraft: draft.blog_md,
     linkedInPost: draft.linkedin_txt,
-    footnotes: draft.footnotes_md || undefined,
+    footnotes: draft.footnotes_md || '',
   };
 
   return (

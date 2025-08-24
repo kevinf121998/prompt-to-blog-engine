@@ -9,7 +9,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const { signIn } = useAuth();
-  const router = useRouter();
+  // const router = useRouter(); // Unused for now
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -70,7 +70,7 @@ export default function LoginPage() {
 
         <div className="text-center">
           <p className="text-xs text-gray-500">
-            We'll send you a secure login link to your email address
+            We&apos;ll send you a secure login link to your email address
           </p>
         </div>
       </div>

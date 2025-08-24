@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import ProtectedRoute from '@/components/ProtectedRoute';
-import { showToast } from '@/utils/toast';
+// import { showToast } from '@/utils/toast'; // Unused for now
 
 interface DraftWithBrief {
   id: string;
@@ -14,7 +14,7 @@ interface DraftWithBrief {
   updated_at: string;
   briefs: {
     id: string;
-    json: any;
+    json: Record<string, unknown>;
     created_at: string;
   };
 }
